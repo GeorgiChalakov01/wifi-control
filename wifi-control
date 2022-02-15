@@ -5,7 +5,7 @@ case $(echo -e "CONNECT\nDISCONNECT\nWIFI ON\nWIFI OFF" | dmenu -i -l 4;) in
 	CONNECT)
 		wifiname=$(nmcli d wifi list | dmenu -p "Select WIFI" -l 20 | cut -d' ' -f9);
 		pass=$(echo | dmenu -p "Password: " -i);
-		nmcli d wifi connect $wifiname password $pass
+		nmcli d wifi connect $wifiname password $pass;
 		;;
 	DISCONNECT)
 		internet=$(nmcli | grep "connected" | sed -n '1p' | cut -c 22-);
